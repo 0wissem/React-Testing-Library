@@ -54,6 +54,8 @@ describe("FollowersList", () => {
 
   it("should render 1 follower in total", async () => {
     axios.get.mockResolvedValue(mockResponse);
+    // to make sure that axios.get is called inside the component
+    expect(axios.get).toBeCalled();
     render(<MockFollowersList />);
     const Followers = await screen.findAllByTestId(/follower/i);
     expect(Followers.length).toBe(1);
